@@ -10,7 +10,7 @@ class ThemeSetup{
 
     public function init(): void{
         add_action('init', array($this, 'registerPostType'));
-        add_action('init', array($this, 'enqueueStyle'));
+        add_action('wp_enqueue_scripts', array($this, 'enqueueStyle'));
     }
 
     private function registerPostType(): void{
@@ -18,7 +18,7 @@ class ThemeSetup{
     }
 
     private function enqueueStyle(): void{
-        wp_enqueue_style('cpt-style', plugin_dir().'/assets/plugin.css',array(), $this->version);
+        wp_enqueue_style('cpt-style', plugin_dir_url( __FILE__ ).'/assets/plugin.css',array(), $this->version);
     }
 
 
